@@ -1,14 +1,14 @@
 import React, { Suspense } from "react";
+import { TwitterShareButton, TwitterIcon } from "react-share";
 import * as Process from "./process";
 //import * as style from '../scss/style.scss';
-import MacroCopyInput from "./macro_copy_input";
+import MacroCopyInput from "./input";
 //import MacroCopyOutput from './macro_copy_output'
 const MacroCopyOutput = React.lazy(
-  () =>
-    import(/* webpackChunkName: "macro_copy_output" */ "./macro_copy_output")
+  () => import(/* webpackChunkName: "macro_copy_output" */ "./output")
 );
 
-const MacroCopy: React.FC = () => {
+const MacroCopyApp: React.FC = () => {
   const [inputText, changeInputText] = React.useState("");
   const [processedText, changeProcessedText] = React.useState("");
   const [headerText, changeHeaderText] = React.useState("/p");
@@ -44,38 +44,14 @@ const MacroCopy: React.FC = () => {
 
   return (
     <React.Fragment>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div className="container-fluid">
-          <a className="navbar-brand" href="#">
-            マクロコピ郎君(β)
-          </a>
-          <div className="collapse navbar-collapse" id="navbarCollapse">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">
-                  Home
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="usage">
-                  使い方
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
       <div className="container-fluid p-5">
-        <a
-          href="https://twitter.com/share?ref_src=twsrc%5Etfw"
-          className="twitter-share-button"
-          data-size="large"
-          data-text="チャット欄に流れたマクロをコピペして整形！マクロコピ郎君(β)"
-          data-hashtags="FFXIV #FF14"
-          data-show-count="false"
+        <TwitterShareButton
+          url="https://atri-konami.github.io/macro_copy"
+          title="チャット欄に流れたマクロをコピペして整形！マクロコピ郎君(β)"
+          hashtags={["FFXIV", "FF14"]}
         >
-          Tweet
-        </a>
+          <TwitterIcon size={32} round />
+        </TwitterShareButton>
         <div className="row">
           <div className="col-4">
             <div className="form-check form-switch">
@@ -158,4 +134,4 @@ const MacroCopy: React.FC = () => {
   );
 };
 
-export default MacroCopy;
+export default MacroCopyApp;

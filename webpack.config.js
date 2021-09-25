@@ -1,7 +1,7 @@
 module.exports = {
   mode: "development",
   entry: {
-    macro_copy: "./src/ts/macro_copy/macro_copy.tsx",
+    macro_copy: "./src/ts/macro_copy/index.tsx",
     timeapp: "./src/ts/timeapp/timeapp.tsx",
   },
   output: {
