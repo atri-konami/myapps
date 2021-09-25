@@ -1,8 +1,8 @@
 module.exports = {
   mode: "production",
   entry: {
-    macro_copy: "./src/ts/macro_copy/macro_copy.tsx",
-    timeapp: "./src/ts/timeapp/timeapp.tsx",
+    macro_copy: "./src/ts/macro_copy/index.tsx",
+    timeapp: "./src/ts/timeapp/index.tsx",
   },
   output: {
     clean: true,

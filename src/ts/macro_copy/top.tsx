@@ -32,8 +32,18 @@ const MacroCopy: React.FC = () => {
                   使い方/Usage
                 </NavLink>
               </li>
+              <li className="nav-item">
+                <a
+                  className="nav-link"
+                  href="https://peing.net/ja/attribute_k"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  ご要望(質問箱)
+                </a>
+              </li>
             </ul>
-            <span className="navbar-text">©2020 atri-konami</span>
+            <span className="navbar-text">©2020 attribute_k</span>
           </div>
         </div>
       </nav>

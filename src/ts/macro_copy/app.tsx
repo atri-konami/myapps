@@ -15,11 +15,13 @@ const MacroCopyApp: React.FC = () => {
   const [footerText, changeFooterText] = React.useState("<se.9>");
   const [isHeaderSet, changeIsHeaderSet] = React.useState(true);
   const [isFooterSet, changeIsFooterSet] = React.useState(false);
+  const [lineNumPerMacro, setLineNumPerMacro] = React.useState(15);
 
   const onChangeInput: React.ChangeEventHandler<HTMLTextAreaElement> = (e) =>
     changeInputText(e.target.value);
 
-  const processInput = () => {
+  const processInput = (e: React.MouseEvent) => {
+    e.preventDefault();
     let processed = Process.trimHeader(inputText);
     if (processed === "") return;
 
@@ -45,15 +47,19 @@ const MacroCopyApp: React.FC = () => {
   return (
     <React.Fragment>
       <div className="container-fluid p-5">
-        <TwitterShareButton
-          url="https://atri-konami.github.io/macro_copy"
-          title="チャット欄に流れたマクロをコピペして整形！マクロコピ郎君(β)"
-          hashtags={["FFXIV", "FF14"]}
-        >
-          <TwitterIcon size={32} round />
-        </TwitterShareButton>
         <div className="row">
-          <div className="col-4">
+          <div className="col-auto">
+            <TwitterShareButton
+              url="https://atri-konami.github.io/macro_copy"
+              title="チャット欄に流れたマクロをコピペして整形！マクロコピ郎君(β)"
+              hashtags={["FFXIV", "FF14"]}
+            >
+              <TwitterIcon size={32} round />
+            </TwitterShareButton>
+          </div>
+        </div>
+        <div className="row">
+          <form className="col-4">
             <div className="form-check form-switch">
               <div className="row align-items-center">
                 <div className="col-auto p-1">
@@ -104,14 +110,35 @@ const MacroCopyApp: React.FC = () => {
                 </div>
               </div>
             </div>
+            <div>
+              <div className="row align-items-center">
+                <span className="col-auto p-1">1マクロあたりの最大行数: </span>
+                <div className="col-auto p-1">
+                  <input
+                    type="number"
+                    max={15}
+                    min={1}
+                    className="form-control"
+                    value={lineNumPerMacro}
+                    placeholder="例) 14, 15"
+                    onChange={(e) => {
+                      const v = parseInt(e.target.value);
+                      setLineNumPerMacro(
+                        isNaN(v) ? 15 : Math.min(15, parseInt(e.target.value))
+                      );
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
             <button
-              type="button"
+              type="submit"
               className="btn btn-primary mb-3"
               onClick={processInput}
             >
               変換
             </button>
-          </div>
+          </form>
         </div>
         <div
           style={{
@@ -124,7 +151,7 @@ const MacroCopyApp: React.FC = () => {
           <Suspense fallback={<div>Loading...</div>}>
             {processedText !== "" && (
               <MacroCopyOutput
-                processedText={Process.paginate(processedText)}
+                processedText={Process.paginate(processedText, lineNumPerMacro)}
               />
             )}
           </Suspense>

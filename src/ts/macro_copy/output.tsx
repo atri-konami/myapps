@@ -25,7 +25,9 @@ const MacroCopyOutput: React.FC<Props> = (props: Props) => {
           return (
             <div className="container mb-3" key={i}>
               <div className="row col-9 mb-3">
-                <h2 className="col mb-0">Output #{i + 1}:</h2>
+                <h2 className="col mb-0">
+                  Output #{i + 1}: {v.length} lines
+                </h2>
                 <Tooltip arrow title={copyMessage} placement="top">
                   <button
                     className="col-auto float-end btn btn btn-outline-primary"

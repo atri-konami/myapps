@@ -2,7 +2,7 @@ module.exports = {
   mode: "development",
   entry: {
     macro_copy: "./src/ts/macro_copy/index.tsx",
-    timeapp: "./src/ts/timeapp/timeapp.tsx",
+    timeapp: "./src/ts/timeapp/index.tsx",
   },
   output: {
     path: __dirname + "/public/js",

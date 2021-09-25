@@ -19,12 +19,12 @@ export const addFooter = (foot: string, text: string): string => {
     .join("\n");
 };
 
-export const paginate = (text: string): string[][] => {
+export const paginate = (text: string, linenum = 15): string[][] => {
   const texts = text.split("\n");
   const res = [];
 
-  for (let i = 0; i < texts.length; i += 15) {
-    res.push(texts.slice(i, i + 15));
+  for (let i = 0; i < texts.length; i += linenum) {
+    res.push(texts.slice(i, i + linenum));
   }
 
   return res;
