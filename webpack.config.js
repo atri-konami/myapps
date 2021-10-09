@@ -1,28 +1,15 @@
+const common = require("./webpack.config.common");
+
 module.exports = {
+  ...common,
   mode: "development",
-  entry: {
-    macro_copy: "./src/ts/macro_copy/index.tsx",
-    timeapp: "./src/ts/timeapp/index.tsx",
-  },
   output: {
-    path: __dirname + "/public/js",
-    filename: "[name].js",
-    chunkFilename: "chunks/[name]-chunk-[chunkhash].js",
-    publicPath: "/js/",
+    path: __dirname + "/public",
+    filename: "js/[name]-[fullhash].js",
+    chunkFilename: "js/chunks/[name]-chunk-[chunkhash].js",
+    clean: true,
   },
   devtool: "inline-source-map",
-  module: {
-    rules: [
-      {
-        test: /\.tsx?$/,
-        use: "ts-loader",
-      },
-    ],
-  },
-  resolve: {
-    extensions: [".js", ".ts", ".tsx"],
-  },
-
   devServer: {
     //contentBase: __dirname + '/public'
     static: {
