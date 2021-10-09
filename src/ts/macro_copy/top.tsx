@@ -43,7 +43,9 @@ const MacroCopy: React.FC = () => {
                 </a>
               </li>
             </ul>
-            <span className="navbar-text">©2020 attribute_k</span>
+            <a href="/">
+              <span className="navbar-text">©2020 attribute_k</span>
+            </a>
           </div>
         </div>
       </nav>
