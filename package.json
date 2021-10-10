@@ -8,7 +8,7 @@
     "start": "webpack-dev-server",
     "build": "webpack --config ./webpack.config.prod.js"
   },
-  "author": "",
+  "author": "Kota INAMORI (https://atri-konami.github.io/)",
   "license": "MIT",
   "devDependencies": {
     "@types/react": "^17.0.24",
