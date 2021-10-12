@@ -39,7 +39,6 @@ jobs:
           source_file: 'dist/.'
           destination_repo: 'atri-konami/atri-konami.github.io'
           destination_branch: 'new_aboutme'
-          destination_branch_create: 'test_workflow'
           delete_destination_folder: 'js'
           user_email: 'freude1994@gmail.com'
           user_name: 'atri-konami'
