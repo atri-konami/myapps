@@ -1,0 +1,46 @@
+name: Build and Deploy
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - deploy-workflow
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          cache: 'yarn'
+      - name: Install modules
+        run: yarn
+      - name: Run ESLint
+        run: yarn eslint ./src/ts/
+  deploy:
+    if: github.event_name == 'push'
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          cache: 'yarn'
+      - name: Install modules
+        run: yarn
+      - name: build javascript
+        run: yarn build
+      - name: copy javascript
+        uses: atri-konami/copy_file_to_another_repo_action@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          source_file: 'dist/.'
+          destination_repo: 'atri-konami/atri-konami.github.io'
+          destination_branch: 'new_aboutme'
+          destination_branch_create: 'test_workflow'
+          delete_destination_folder: 'js'
+          user_email: 'freude1994@gmail.com'
+          user_name: 'atri-konami'
