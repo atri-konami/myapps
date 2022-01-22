@@ -13,8 +13,8 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: '16'
-          cache: 'yarn'
+          node-version: 16
+          cache: yarn
       - name: Install modules
         run: yarn
       - name: Run ESLint
@@ -27,10 +27,10 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: '16'
-          cache: 'yarn'
+          node-version: 16
+          cache: yarn
       - name: Install modules
-        run: yarn
+        run: yarn upgrade
       - name: build javascript
         run: yarn build
       - name: copy javascript
@@ -38,9 +38,9 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source_file: 'dist/.'
-          destination_repo: 'atri-konami/atri-konami.github.io'
-          destination_branch: 'new_aboutme'
-          delete_destination_folder: 'js'
-          user_email: 'freude1994@gmail.com'
-          user_name: 'atri-konami'
+          source_file: dist/.
+          destination_repo: atri-konami/atri-konami.github.io
+          destination_branch: new_aboutme
+          delete_destination_folder: js
+          user_email: freude1994@gmail.com
+          user_name: atri-konami
