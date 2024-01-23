@@ -35,11 +35,11 @@ const MacroCopy: React.FC = () => {
               <li className="nav-item">
                 <a
                   className="nav-link"
-                  href="https://peing.net/ja/attribute_k"
+                  href="https://marshmallow-qa.com/1k7why9kgzr00mu?t=1LAxEa&utm_medium=url_text&utm_source=promotion"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  ご要望(質問箱)
+                  ご要望(マシュマロ)
                 </a>
               </li>
             </ul>

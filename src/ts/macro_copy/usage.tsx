@@ -53,7 +53,7 @@ const Usage: React.FC = () => (
     </ol>
     <div>
       不具合報告等は<a href="https://twitter.com/attribute_k">Twitter</a>
-      もしくは質問箱(↑のリンクから)で受け付けています。Twitterの方が応答率は高いです。匿名希望の方は質問箱からどうぞ。
+      もしくはマシュマロ(↑のリンクから)で受け付けています。Twitterの方が応答率は高いです。匿名希望の方は質問箱からどうぞ。
     </div>
   </div>
 );
